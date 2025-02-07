@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+<table class="table mt-5">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Service Name</th>
+      <th scope="col">Payment Terms</th>
+      <th scope="col">Service Price</th>
+      <th scope="col">Service Tax</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for service in service %}
+    <tr>
+      <th scope="row">{{service.id}}</th>
+      <td>{{service.service_name}}</td>
+      <td>{{service.payment_terms}}</td>
+      <td>{{service.service_price}}</td>
+      <td>{{service.service_tax}}</td>
+      <td class="mx-2"><a href="{% url "update_service" id=service.id %}" type="button" class="btn btn-primary">Update</a>
+<a href="{% url "delete_service" id=service.id %}" type="button" class="btn btn-danger">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock content %}

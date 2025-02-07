@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+  <h1 class="h1 text-center">Services</h1>
+  <div class="row">
+    {% if service %}
+    {% for service in service %}
+    <div class="col-sm-4 mb-3 mb-sm-0">
+      <div class="card" style="width: 18rem">
+        {% if service.service_image %}
+        <div class="text-center">
+        <img src="{{service.service_image.url}}" style="width: 16rem; height:12rem" class="card-img-top" />
+        </div>
+        {% else %}
+        <img src="https://via.placeholder.com/600x300?text=No+Image" class="card-img-top img-fluid" alt="No Image Available">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{service.service_name}}</h5>
+          <p class="card-text">{{service.payment_terms}}</p>
+          <div class="d-flex justify-content-between">
+            <p class="card-text text-danger">Rs. {{service.service_price}}</p>
+            <p class="card-text text-success">{{service.service_package}}</p>
+          </div>
+          <a href="{% url "show_service" id=service.id %}" class="btn btn-primary">Subscribe</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}

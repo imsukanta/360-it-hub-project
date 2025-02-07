@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+<div class="container w-100">
+  <div class="title fw-bold fs-5">Verification</div>
+  <form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="otp" class="form-label">Enter Your OTP</label>
+      <input
+        type="number"
+        class="form-control"
+        id="otp"
+        name="otp"
+        placeholder="Enter OTP"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Vefify</button>
+  </form>
+</div>
+
+{% endblock content %}

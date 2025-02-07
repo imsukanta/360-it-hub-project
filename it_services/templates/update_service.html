@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container mt-3 p-4">
+        <h2 class="mb-4">Update Service</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="name" class="form-label">Service Name</label>
+                <input value='{{service.service_name}}' type="text" class="form-control" name="service_name" id="service_name" placeholder="Enter Your Serivce Name">
+            </div>
+            <div class="mb-3">
+                <label for="payment_terms" class="form-label">Payment Terms</label>
+                <input value='{{service.payment_terms}}' type="text" class="form-control" name="payment_terms" id="payment_terms" placeholder="Payment Terms">
+            </div>
+            <div class="mb-3">
+                <label for="service_price" class="form-label">Service Price</label>
+                <input value='{{service.service_price}}' type="number" class="form-control" name="service_price" id="service_price" placeholder="Enter the Service Price">
+            </div>
+            <div class="mb-3">
+                <label for="service_package" class="form-label">Service Package</label>
+                <input value='{{service.service_package}}' type="text" class="form-control" name="service_package" id="service_package" placeholder="Enter the Service Package">
+            </div>
+            <div class="mb-3">
+                <label for="service_tax" class="form-label">Service Tax</label>
+                <input value='{{service.service_tax}}' type="number" class="form-control" name="service_tax" id="service_tax" rows="5" placeholder="Enter Your Serivce Tax">
+            </div>
+            <div class="mb-3">
+                <label for="service_image" class="form-label">Service Image</label>
+                <input value='{{service.service_image}}' type="file" class="form-control" name="service_image" id="service_image" rows="5" placeholder="Ente Your Serivce Image">
+            </div>
+            <div class="mb-3 form-check">
+                <input {% if service.active %}checked{% endif %} type="checkbox" class="form-check-input" name="active" id="active">
+                <label class="form-check-label" for="active">Active</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+{% endblock content %}
